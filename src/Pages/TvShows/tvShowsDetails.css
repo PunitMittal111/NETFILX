@@ -1,0 +1,11 @@
+.background-contain {
+  background-image: url("https://d17lbu6bbzbdc8.cloudfront.net/wp-content/uploads/2019/12/10220621/netflix-mod-apk_1400x875_5d5249c3cf35d.jpg");
+  height: 100vh;
+  overflow-y: auto;
+  background-size: cover;
+  background-position: center;
+}
+
+.background-cont::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .netflix-text {
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+    transform: perspective(300px) rotateX(10deg);
+  }
+}
