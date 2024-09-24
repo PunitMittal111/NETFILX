@@ -14,19 +14,6 @@ const MovieApp = () => {
 
   return (
     <div className="background-container w-full">
-      {/* <div className="navbar">
-        <div className="ml-20">
-          <h1 className="logo">
-            <span className="bend">
-              N
-              <span className="move-up">
-                E<span className="move-bit">TFL</span>I
-              </span>
-              X
-            </span>
-          </h1>
-        </div>
-      </div> */}
       <Netflix />
 
       <div className="flex items-center justify-center text-[#ff0000]">
@@ -35,7 +22,7 @@ const MovieApp = () => {
 
       <div className="h-screen">
         <div className="text-white">
-          <div className="grid grid-cols-4 gap-6 p-10 text-center">
+          <div className="grid grid-cols-4 gap-6 p-10 text-center ">
             {data.map((movie) => (
               <div
                 className="grid items-center justify-center py-2 cursor-pointer"

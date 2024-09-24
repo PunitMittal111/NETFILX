@@ -143,35 +143,6 @@ const CustomVideoPlayer = () => {
           onChange={handleVolumeChange}
           className="w-14"
         />
-        {/* <div className=" flex flex-col items-center gap-8 w-10 py-4  border border-white ">
-          <div
-            style={{
-              transform: "rotate(-90deg)",
-            }}
-          >
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.01"
-              value={volume}
-              onChange={handleVolumeChange}
-              className="w-16 "
-            />
-          </div>
-
-          <button
-            onClick={handleMuteToggle}
-            className="text-red-500 hover:text-red-700 rounded-full "
-            aria-label={isMuted ? "Unmute" : "Mute"}
-          >
-            {isMuted ? (
-              <FaVolumeMute className="text-2xl" />
-            ) : (
-              <FaVolumeUp className="text-2xl" />
-            )}
-          </button>
-        </div> */}
         <button onClick={toggleFullscreen} className="px-2 py-1">
           {isFullscreen ? (
             <FaCompress className="text-red-500 h-6 w-6" />

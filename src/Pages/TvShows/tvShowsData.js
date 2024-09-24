@@ -26,7 +26,7 @@ export const data2 = [
     description:
       "A group of young friends uncovers a series of extraordinary mysteries involving supernatural forces and secret government experiments.",
     cast: ["Millie Bobby Brown", "Finn Wolfhard", "Winona Ryder"],
-    genre: "Drama, Fantasy, Horror",
+    genre: "Horror",
     year: [2016],
     screenshot: [
       "https://media.wired.com/photos/62b4f69cec87e408fbf152ff/master/pass/Uncomfortable-Comforts-of-Stranger-Things-Culture-T_6_Unit_02910_R.jpg",

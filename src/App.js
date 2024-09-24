@@ -11,6 +11,7 @@ import Notifications from "./Pages/Notifiactions/Notifications.jsx";
 import MoviesDetails from "./Pages/Movies/Moviesdetails.jsx";
 import TvShowsDetails from "./Pages/TvShows/TvShowsDetails.jsx";
 import Search from "./Pages/Search/Search.jsx";
+import CategoryResults from "./Pages/Categories/CategoryResult.jsx";
 
 function App() {
   const Navigate = useNavigate();
@@ -29,6 +30,7 @@ function App() {
           <Route path="/moviesdetails/:id" element={<MoviesDetails />} />
           <Route path="/movies/:id" element={<MoviesDetails />} />
           <Route path="/categories" element={<Categories />} />
+          <Route path="/categoryresults/:type" element={<CategoryResults />} />
           <Route path="/myList" element={<MyList />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/" element={<Navigate to="/" />} />
