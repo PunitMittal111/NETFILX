@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../Components/Common/Common.css";
+import "../../Components/Common/Image.css";
 import { useNavigate } from "react-router-dom";
 import { IoIosSearch } from "react-icons/io";
 import { data } from "../Movies/moviesData";

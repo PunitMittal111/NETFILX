@@ -1,5 +1,5 @@
 import React from "react";
-import "./tvShows.css";
+import "../../Components/Common/Image.css";
 import { data2 } from "./tvShowsData";
 import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ const TvShows = () => {
   }
 
   return (
-    <div className="background-cont w-full">
+    <div className="image w-full">
       <Netflix />
 
       <div className="flex items-center justify-center text-[#ff0000]">

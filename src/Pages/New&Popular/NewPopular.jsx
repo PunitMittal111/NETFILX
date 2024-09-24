@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Netflix from "../../Components/Common/Netflix";
-import "../../Components/Common/Common.css";
+import "../../Components/Common/Image.css";
 import { data as moviesData } from "../Movies/moviesData";
 import { data2 as tvShowsData } from "../TvShows/tvShowsData";
 import { FaStar } from "react-icons/fa";

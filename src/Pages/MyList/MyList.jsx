@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./MyList.css";
+import "../../Components/Common/Image.css";
 import { FaStar } from "react-icons/fa";
 import Netflix from "../../Components/Common/Netflix";
 
@@ -16,7 +16,7 @@ const MyList = () => {
   }, []);
 
   return (
-    <div className="List">
+    <div className="image">
       <Netflix />
 
       <div className="flex items-center justify-center text-[#ff0000] ">

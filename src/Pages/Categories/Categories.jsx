@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./Categories.css";
+import "../../Components/Common/Image.css";
 import Netflix from "../../Components/Common/Netflix";
 import { data } from "./Categoriesdata";
 
@@ -12,7 +12,7 @@ const Categories = () => {
   };
 
   return (
-    <div className="Category">
+    <div className="image">
       <Netflix />
 
       <div className="flex items-center justify-center text-[#ff0000] ">

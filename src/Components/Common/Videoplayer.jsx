@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import videoSrc from "../../Components/video.mp4"; // Adjust the path as needed
+import videoSrc from "../../Components/Common/video.mp4";
 import {
   FaBackward,
   FaPlay,

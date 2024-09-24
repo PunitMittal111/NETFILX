@@ -1,6 +1,6 @@
 import React from "react";
 import Netflix from "../../Components/Common/Netflix";
-import "../../Components/Common/Common.css";
+import "../../Components/Common/Image.css";
 
 const Categories = () => {
   return (

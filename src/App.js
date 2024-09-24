@@ -7,7 +7,6 @@ import TvShows from "./Pages/TvShows/TvShows.jsx";
 import Movies from "./Pages/Movies/Movies.jsx";
 import Categories from "./Pages/Categories/Categories.jsx";
 import MyList from "./Pages/MyList/MyList.jsx";
-import Notifications from "./Pages/Notifiactions/Notifications.jsx";
 import MoviesDetails from "./Pages/Movies/Moviesdetails.jsx";
 import TvShowsDetails from "./Pages/TvShows/TvShowsDetails.jsx";
 import Search from "./Pages/Search/Search.jsx";
@@ -32,7 +31,6 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/categoryresults/:type" element={<CategoryResults />} />
           <Route path="/myList" element={<MyList />} />
-          <Route path="/notifications" element={<Notifications />} />
           <Route path="/" element={<Navigate to="/" />} />
         </Routes>
       </div>

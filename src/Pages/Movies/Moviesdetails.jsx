@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { data } from "./moviesData";
-import "./moviesDetails.css";
+import "../../Components/Common/Image2.css";
 import StarRating from "../../Components/Common/StarRating";
 import CustomVideoPlayer from "../../Components/Common/Videoplayer";
 import { FaHeart } from "react-icons/fa";
@@ -36,7 +36,7 @@ const MoviesDetails = () => {
   const isInList = movieList.some((m) => m.id === movie.id);
 
   return (
-    <div className="background-containers">
+    <div className="image2">
       <div className="flex flex-col justify-center items-start text-white p-10 gap-2">
         <div className=" flex w-full items-center justify-between ">
           <h1 className="text-4xl font-bold ">{movie.title}</h1>

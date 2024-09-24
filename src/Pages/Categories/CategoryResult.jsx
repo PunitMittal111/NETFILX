@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { data as movieData } from "../Movies/moviesData";
 import { data2 as tvShowsData } from "../TvShows/tvShowsData";
-import "./CategoryResult.css";
+import "../../Components/Common/Image.css";
 import Netflix from "../../Components/Common/Netflix";
 import { FaStar } from "react-icons/fa";
 
@@ -22,7 +22,7 @@ const CategoryResults = () => {
   ];
 
   return (
-    <div className="CategoryResult">
+    <div className="image">
       <Netflix />
       <div className="flex items-center justify-center text-[#ff0000] ">
         <h1 className="text-4xl font-bold ">{type} Movies & TV Shows</h1>
