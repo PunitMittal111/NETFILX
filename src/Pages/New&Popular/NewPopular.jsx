@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Netflix from "../../Components/Common/Netflix";
-import "./New&Popular.css";
+import "../../Components/Common/Common.css";
 import { data as moviesData } from "../Movies/moviesData";
 import { data2 as tvShowsData } from "../TvShows/tvShowsData";
 import { FaStar } from "react-icons/fa";
@@ -11,7 +11,7 @@ const NewPopular = () => {
   const sortedData = combinedData.sort((a, b) => b.year - a.year);
 
   return (
-    <div className="news">
+    <div className="image">
       <Netflix />
 
       <div className="grid text-center items-center justify-center text-[#ff0000]">

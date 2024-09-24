@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
+import "../../Components/Common/Common.css";
 import { useNavigate } from "react-router-dom";
-import "./Search.css";
 import { IoIosSearch } from "react-icons/io";
 import { data } from "../Movies/moviesData";
 import { FaStar } from "react-icons/fa";
@@ -37,7 +37,7 @@ const Search = () => {
   };
 
   return (
-    <div className="Main flex flex-col">
+    <div className="image flex flex-col">
       <Netflix />
 
       <div className="flex items-center justify-center text-[#ff0000]">

@@ -1,12 +1,12 @@
 export const data = [
   {
     image:
-      "https://img.freepik.com/premium-photo/action-typography-3d-design-cute-text-word-cool-background-photo-jpg_873925-692642.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWgZgbwaSsueu-WKWR-VLdgcGMQVT9L4EK9UUHLDwMuRGbPil0mBwLhC4EFz-MuV8swjc&usqp=CAU",
     type: "Action",
   },
   {
     image:
-      "https://www.shutterstock.com/image-vector/typography-calligraphy-word-art-text-260nw-1286236870.jpg",
+      "https://cdn.vectorstock.com/i/1000v/23/39/adventure-logo-with-mountain-and-compass-design-vector-47732339.jpg",
     type: "Adventure",
   },
   {

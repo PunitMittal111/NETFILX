@@ -1,4 +1,4 @@
-.Main {
+.image {
   background-image: url("https://wallpapers.com/images/hd/netflix-background-gs7hjuwvv2g0e9fj.jpg");
   height: 100vh;
   overflow-y: auto;
@@ -6,6 +6,6 @@
   background-position: center;
 }
 
-.Main::-webkit-scrollbar {
+.image::-webkit-scrollbar {
   display: none;
 }

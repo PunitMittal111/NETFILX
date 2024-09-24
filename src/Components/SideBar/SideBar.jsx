@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FaListUl } from "react-icons/fa";
 import { FaSearch, FaHome, FaStar, FaTv, FaFilm, FaList } from "react-icons/fa";
 import { BsPlusLg } from "react-icons/bs";
@@ -49,25 +49,52 @@ const SideBar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
 
+  const modalRef = useRef(null);
+  const notificationIconRef = useRef(null);
   const navigate = useNavigate();
+
+  const notifications = [
+    "New episodes of Money Heist are now available! Don't miss out on the latest adventures!",
+    "We think you'll love The Matrix based on your recent viewing history!",
+    "Reminder: Stranger Things Season 4 premieres this Friday!",
+    "You've watched all episodes of The Witcher. Here are some similar shows you might enjoy!",
+  ];
 
   const closeAllModals = () => {
     setIsNotificationModalOpen(false);
   };
 
   const handleNotificationClick = () => {
-    closeAllModals();
     setIsNotificationModalOpen((prev) => !prev);
   };
 
   function handleSideClick(index, ele) {
     setClick(index);
     navigate(ele.route);
+    closeAllModals();
   }
 
   function toggleSidebar() {
     setIsSidebarOpen(!isSidebarOpen);
   }
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target) &&
+        notificationIconRef.current &&
+        !notificationIconRef.current.contains(event.target)
+      ) {
+        closeAllModals();
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div
@@ -82,15 +109,23 @@ const SideBar = () => {
           onClick={toggleSidebar}
         />
 
-        <div className="cursor-pointer" onClick={handleNotificationClick}>
+        <div
+          className="cursor-pointer"
+          onClick={handleNotificationClick}
+          ref={notificationIconRef}
+        >
           {isSidebarOpen ? <IoIosNotificationsOutline size={32} /> : ""}
-          {isNotificationModalOpen && <NotificationModal />}
+          {isNotificationModalOpen && (
+            <div ref={modalRef}>
+              <NotificationModal notifications={notifications} />
+            </div>
+          )}
         </div>
       </div>
 
       {isSidebarOpen && (
         <>
-          <div className=" flex gap-2 mt-2 border border-white">
+          <div className="flex gap-2 mt-2">
             <img
               src="https://t4.ftcdn.net/jpg/03/91/55/85/360_F_391558541_Yqt3ZBJz6NxMrcgQbHC7Xb8lDkUkSF3r.jpg"
               alt=""
