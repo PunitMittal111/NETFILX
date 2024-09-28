@@ -5,6 +5,7 @@ import { BsPlusLg } from "react-icons/bs";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import NotificationModal from "./NotificationModal";
+import ProfileModal from "./ProfileModal";
 
 const sideBarLinks = [
   {
@@ -48,6 +49,7 @@ const SideBar = () => {
   const [click, setClick] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
   const modalRef = useRef(null);
   const notificationIconRef = useRef(null);
@@ -60,13 +62,9 @@ const SideBar = () => {
     "You've watched all episodes of The Witcher. Here are some similar shows you might enjoy!",
   ];
 
-  const closeAllModals = () => {
-    setIsNotificationModalOpen(false);
-  };
-
-  const handleNotificationClick = () => {
-    setIsNotificationModalOpen((prev) => !prev);
-  };
+  function toggleSidebar() {
+    setIsSidebarOpen(!isSidebarOpen);
+  }
 
   function handleSideClick(index, ele) {
     setClick(index);
@@ -74,9 +72,15 @@ const SideBar = () => {
     closeAllModals();
   }
 
-  function toggleSidebar() {
-    setIsSidebarOpen(!isSidebarOpen);
-  }
+  // NotificationModal
+  const closeAllModals = () => {
+    setIsNotificationModalOpen(false);
+    setIsProfileModalOpen(false);
+  };
+
+  const handleNotificationClick = () => {
+    setIsNotificationModalOpen((prev) => !prev);
+  };
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -96,13 +100,22 @@ const SideBar = () => {
     };
   }, []);
 
+  // ProfileModal
+  const handleProfileClick = () => {
+    setIsProfileModalOpen((prev) => !prev);
+  };
+
+  const toggleProfileModal = () => {
+    setIsProfileModalOpen((prev) => !prev);
+  };
+
   return (
     <div
       className={`h-[100vh] ${
-        isSidebarOpen ? "w-[20%]" : "w-[2.5%]"
+        isSidebarOpen ? "w-[21%]" : "w-[4%]"
       }  bg-black text-white transition-all duration-300 overflow-hidden `}
     >
-      <div className="flex justify-between items-center w-full py-3 ">
+      <div className="flex justify-between items-center w-[90%] ml-3 py-3 ">
         <FaListUl
           className="cursor-pointer"
           size={32}
@@ -125,16 +138,32 @@ const SideBar = () => {
 
       {isSidebarOpen && (
         <>
-          <div className="flex gap-2 mt-2">
+          <div
+            className={`flex gap-2 mt-2 w-[90%] ml-3 cursor-pointer ${
+              isProfileModalOpen ? "blur-background" : ""
+            }`}
+          >
             <img
               src="https://t4.ftcdn.net/jpg/03/91/55/85/360_F_391558541_Yqt3ZBJz6NxMrcgQbHC7Xb8lDkUkSF3r.jpg"
               alt=""
               className="h-7 w-7 rounded-3xl"
+              onClick={toggleProfileModal}
             />
-            <h1>PunitNetflix1111@gmail.com</h1>
+
+            <div
+              className="text-[20px] font-semibold"
+              onClick={handleProfileClick}
+            >
+              {isProfileModalOpen && (
+                <div ref={modalRef}>
+                  <ProfileModal />
+                </div>
+              )}
+              <h1>Profile</h1>
+            </div>
           </div>
 
-          <div>
+          <div className=" w-[90%] ml-3 ">
             <div className="grid items-start justify-start gap-8 pt-[10%] pb-[12px] ">
               {sideBarLinks.map((ele, index) => (
                 <div

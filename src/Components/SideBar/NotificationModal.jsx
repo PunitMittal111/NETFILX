@@ -1,9 +1,9 @@
 import React from "react";
-import { FaBell, FaTimes } from "react-icons/fa"; // Example icon imports
+import { FaBell, FaTimes } from "react-icons/fa";
 
 const NotificationModal = ({ notifications, onClose }) => {
   return (
-    <div className="absolute z-20 bg-gradient-to-r bg-black border border-gray-200 text-white rounded-xl shadow-2xl py-5 px-7 w-80 transition-all duration-300">
+    <div className="absolute z-20 bg-black border border-gray-200 text-white rounded-xl shadow-2xl py-5 px-7 w-80 transition-all duration-300">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-bold flex items-center">
           <FaBell className="mr-2" />
@@ -23,7 +23,6 @@ const NotificationModal = ({ notifications, onClose }) => {
               key={index}
               className="mb-2 flex items-center hover:bg-red-500 rounded-lg p-2 transition-colors duration-200"
             >
-              <FaBell className="mr-2" />
               {notification}
             </li>
           ))

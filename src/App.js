@@ -20,6 +20,7 @@ function App() {
       <div className="flex-1 border border-black w-full h-screen">
         <Routes>
           <Route path="/" element={<Home />} />
+
           <Route path="/search" element={<Search />} />
           <Route path="/new&Popular" element={<NewPopular />} />
           <Route path="/tvShows" element={<TvShows />} />
