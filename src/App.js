@@ -11,6 +11,7 @@ import MoviesDetails from "./Pages/Movies/Moviesdetails.jsx";
 import TvShowsDetails from "./Pages/TvShows/TvShowsDetails.jsx";
 import Search from "./Pages/Search/Search.jsx";
 import CategoryResults from "./Pages/Categories/CategoryResult.jsx";
+import EditProfileModal from "./Components/SideBar/EditProfileModal.jsx";
 
 function App() {
   const Navigate = useNavigate();
@@ -32,6 +33,7 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/categoryresults/:type" element={<CategoryResults />} />
           <Route path="/myList" element={<MyList />} />
+          <Route path="/EditProfileModal" element={<EditProfileModal />} />
           <Route path="/" element={<Navigate to="/" />} />
         </Routes>
       </div>
