@@ -1,189 +1,3 @@
-// import React, { useState, useRef, useEffect } from "react";
-// import { FaListUl } from "react-icons/fa";
-// import { FaSearch, FaHome, FaStar, FaTv, FaFilm, FaList } from "react-icons/fa";
-// import { BsPlusLg } from "react-icons/bs";
-// import { IoIosNotificationsOutline } from "react-icons/io";
-// import { useNavigate } from "react-router-dom";
-// import NotificationModal from "./NotificationModal";
-// import ProfileModal from "./ProfileModal";
-
-// const sideBarLinks = [
-//   {
-//     name: "Search",
-//     icon: <FaSearch size={22} />,
-//     route: "/search",
-//   },
-//   {
-//     name: "Home",
-//     icon: <FaHome size={22} />,
-//     route: "/",
-//   },
-//   {
-//     name: "New & Popular",
-//     icon: <FaStar size={22} />,
-//     route: "/new&Popular",
-//   },
-//   {
-//     name: "TV Shows",
-//     icon: <FaTv size={22} />,
-//     route: "/tvShows",
-//   },
-//   {
-//     name: "Movies",
-//     icon: <FaFilm size={22} />,
-//     route: "/movies",
-//   },
-//   {
-//     name: "Categories",
-//     icon: <FaList size={22} />,
-//     route: "/categories",
-//   },
-//   {
-//     name: "My List",
-//     icon: <BsPlusLg size={22} />,
-//     route: "/myList",
-//   },
-// ];
-
-// const SideBar = () => {
-//   const [click, setClick] = useState(null);
-//   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-//   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
-//   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
-
-//   const modalRef = useRef(null);
-//   const notificationIconRef = useRef(null);
-//   const navigate = useNavigate();
-
-//   const notifications = [
-//     "New episodes of Money Heist are now available! Don't miss out on the latest adventures!",
-//     "We think you'll love The Matrix based on your recent viewing history!",
-//     "Reminder: Stranger Things Season 4 premieres this Friday!",
-//     "You've watched all episodes of The Witcher. Here are some similar shows you might enjoy!",
-//   ];
-
-//   function toggleSidebar() {
-//     setIsSidebarOpen(!isSidebarOpen);
-//   }
-
-//   function handleSideClick(index, ele) {
-//     setClick(index);
-//     navigate(ele.route);
-//     closeAllModals();
-//   }
-
-//   // NotificationModal
-//   const closeAllModals = () => {
-//     setIsNotificationModalOpen(false);
-//     setIsProfileModalOpen(false);
-//   };
-
-//   const handleNotificationClick = () => {
-//     setIsNotificationModalOpen((prev) => !prev);
-//   };
-
-//   useEffect(() => {
-//     function handleClickOutside(event) {
-//       if (
-//         modalRef.current &&
-//         !modalRef.current.contains(event.target) &&
-//         notificationIconRef.current &&
-//         !notificationIconRef.current.contains(event.target)
-//       ) {
-//         closeAllModals();
-//       }
-//     }
-
-//     document.addEventListener("mousedown", handleClickOutside);
-//     return () => {
-//       document.removeEventListener("mousedown", handleClickOutside);
-//     };
-//   }, []);
-
-//   // ProfileModal
-//   const toggleProfileModal = () => {
-//     setIsProfileModalOpen((prev) => !prev);
-//   };
-
-//   return (
-//     <div
-//       className={`h-[100vh] ${
-//         isSidebarOpen ? "w-[21%]" : "w-[4%]"
-//       }  bg-black text-white transition-all duration-300 overflow-hidden `}
-//     >
-//       <div className="flex justify-between items-center w-[90%] ml-3 py-3 ">
-//         <FaListUl
-//           className="cursor-pointer"
-//           size={32}
-//           onClick={toggleSidebar}
-//         />
-
-//         <div
-//           className="cursor-pointer"
-//           onClick={handleNotificationClick}
-//           ref={notificationIconRef}
-//         >
-//           {isSidebarOpen ? <IoIosNotificationsOutline size={32} /> : ""}
-//           {isNotificationModalOpen && (
-//             <div ref={modalRef}>
-//               <NotificationModal notifications={notifications} />
-//             </div>
-//           )}
-//         </div>
-//       </div>
-
-//       {isSidebarOpen && (
-//         <>
-//           <div className={`flex gap-2 mt-2 w-[90%] ml-3 cursor-pointer`}>
-//             <img
-//               src="https://t4.ftcdn.net/jpg/03/91/55/85/360_F_391558541_Yqt3ZBJz6NxMrcgQbHC7Xb8lDkUkSF3r.jpg"
-//               alt=""
-//               className="h-7 w-7 rounded-3xl"
-//               onClick={toggleProfileModal}
-//             />
-//             <h1
-//               className="cursor-pointer text-[20px] font-semibold"
-//               onClick={toggleProfileModal}
-//             >
-//               Profile
-//             </h1>
-
-//             {isProfileModalOpen && (
-//               <div ref={modalRef}>
-//                 <ProfileModal onClose={toggleProfileModal} />
-//               </div>
-//             )}
-//           </div>
-
-//           <div className=" w-[90%] ml-3 ">
-//             <div className="grid items-start justify-start gap-8 pt-[10%] pb-[12px] ">
-//               {sideBarLinks.map((ele, index) => (
-//                 <div
-//                   key={index}
-//                   className={`flex items-center justify-start gap-10 cursor-pointer`}
-//                   onClick={() => handleSideClick(index, ele)}
-//                 >
-//                   <div
-//                     className={`${
-//                       click === index
-//                         ? "underline border-b border-red-700 px-1 py-1"
-//                         : ""
-//                     }`}
-//                   >
-//                     {ele.icon}
-//                   </div>
-//                   <h2 className="text-[30px] font-semibold">{ele.name}</h2>
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-//         </>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default SideBar;
 import React, { useState, useRef, useEffect } from "react";
 import { FaListUl } from "react-icons/fa";
 import { FaSearch, FaHome, FaStar, FaTv, FaFilm, FaList } from "react-icons/fa";
@@ -194,41 +8,13 @@ import NotificationModal from "./NotificationModal";
 import ProfileModal from "./ProfileModal";
 
 const sideBarLinks = [
-  {
-    name: "Search",
-    icon: <FaSearch size={22} />,
-    route: "/search",
-  },
-  {
-    name: "Home",
-    icon: <FaHome size={22} />,
-    route: "/",
-  },
-  {
-    name: "New & Popular",
-    icon: <FaStar size={22} />,
-    route: "/new&Popular",
-  },
-  {
-    name: "TV Shows",
-    icon: <FaTv size={22} />,
-    route: "/tvShows",
-  },
-  {
-    name: "Movies",
-    icon: <FaFilm size={22} />,
-    route: "/movies",
-  },
-  {
-    name: "Categories",
-    icon: <FaList size={22} />,
-    route: "/categories",
-  },
-  {
-    name: "My List",
-    icon: <BsPlusLg size={22} />,
-    route: "/myList",
-  },
+  { name: "Search", icon: <FaSearch size={22} />, route: "/search" },
+  { name: "Home", icon: <FaHome size={22} />, route: "/" },
+  { name: "New & Popular", icon: <FaStar size={22} />, route: "/new&Popular" },
+  { name: "TV Shows", icon: <FaTv size={22} />, route: "/tvShows" },
+  { name: "Movies", icon: <FaFilm size={22} />, route: "/movies" },
+  { name: "Categories", icon: <FaList size={22} />, route: "/categories" },
+  { name: "My List", icon: <BsPlusLg size={22} />, route: "/myList" },
 ];
 
 const SideBar = () => {
@@ -237,10 +23,9 @@ const SideBar = () => {
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
-  // Separate refs for both modals
   const notificationModalRef = useRef(null);
-  const profileModalRef = useRef(null);
   const notificationIconRef = useRef(null);
+
   const navigate = useNavigate();
 
   const notifications = [
@@ -250,36 +35,27 @@ const SideBar = () => {
     "You've watched all episodes of The Witcher. Here are some similar shows you might enjoy!",
   ];
 
-  function toggleSidebar() {
-    setIsSidebarOpen(!isSidebarOpen);
-  }
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
-  function handleSideClick(index, ele) {
+  const handleSideClick = (index, ele) => {
     setClick(index);
     navigate(ele.route);
     closeAllModals();
-  }
+  };
 
-  // Close all modals function
   const closeAllModals = () => {
     setIsNotificationModalOpen(false);
     setIsProfileModalOpen(false);
   };
 
-  // Toggle NotificationModal
   const handleNotificationClick = () => {
     setIsNotificationModalOpen((prev) => !prev);
   };
 
-  // Toggle ProfileModal
-  const toggleProfileModal = () => {
-    setIsProfileModalOpen((prev) => !prev);
-  };
+  const toggleProfileModal = () => setIsProfileModalOpen((prev) => !prev);
 
-  // Detect clicks outside of both modals
   useEffect(() => {
-    function handleClickOutside(event) {
-      // Close NotificationModal if clicked outside
+    const handleClickOutside = (event) => {
       if (
         notificationModalRef.current &&
         !notificationModalRef.current.contains(event.target) &&
@@ -288,27 +64,20 @@ const SideBar = () => {
       ) {
         setIsNotificationModalOpen(false);
       }
-
-      // Close ProfileModal if clicked outside
-      if (
-        profileModalRef.current &&
-        !profileModalRef.current.contains(event.target)
-      ) {
-        setIsProfileModalOpen(false);
-      }
-    }
+    };
 
     document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [isNotificationModalOpen]);
 
   return (
     <div
       className={`h-[100vh] ${
         isSidebarOpen ? "w-[21%]" : "w-[4%]"
-      } bg-black text-white transition-all duration-300 overflow-hidden`}
+      } bg-[#0A0A0A] text-white border-r border-r-gray-500 transition-all duration-300 overflow-hidden`}
     >
       <div className="flex justify-between items-center w-[90%] ml-3 py-3">
         <FaListUl
@@ -316,13 +85,12 @@ const SideBar = () => {
           size={32}
           onClick={toggleSidebar}
         />
-
         <div
           className="cursor-pointer"
           onClick={handleNotificationClick}
           ref={notificationIconRef}
         >
-          {isSidebarOpen ? <IoIosNotificationsOutline size={32} /> : ""}
+          {isSidebarOpen && <IoIosNotificationsOutline size={32} />}
           {isNotificationModalOpen && (
             <div ref={notificationModalRef}>
               <NotificationModal notifications={notifications} />
@@ -330,10 +98,9 @@ const SideBar = () => {
           )}
         </div>
       </div>
-
       {isSidebarOpen && (
         <>
-          <div className={`flex gap-2 mt-2 w-[90%] ml-3 cursor-pointer`}>
+          <div className="flex gap-2 mt-2 w-[90%] ml-3 cursor-pointer">
             <img
               src="https://t4.ftcdn.net/jpg/03/91/55/85/360_F_391558541_Yqt3ZBJz6NxMrcgQbHC7Xb8lDkUkSF3r.jpg"
               alt="Profile"
@@ -346,32 +113,50 @@ const SideBar = () => {
             >
               Profile
             </h1>
-
             {isProfileModalOpen && (
-              <div ref={profileModalRef}>
-                <ProfileModal onClose={toggleProfileModal} />
+              <div>
+                <ProfileModal
+                  onClose={toggleProfileModal}
+                  isOpen={isProfileModalOpen}
+                  setIsOpen={setIsProfileModalOpen}
+                />
               </div>
             )}
           </div>
-
-          <div className="w-[90%] ml-3">
+          <div className="w-[90%] ml-5">
             <div className="grid items-start justify-start gap-8 pt-[10%] pb-[12px]">
               {sideBarLinks.map((ele, index) => (
                 <div
                   key={index}
-                  className={`flex items-center justify-start gap-10 cursor-pointer`}
+                  className={`flex items-center justify-start gap-10 cursor-pointer transition-all duration-400 ease-in-out ${
+                    click === index ? "scale-110" : ""
+                  }`}
                   onClick={() => handleSideClick(index, ele)}
+                  onMouseEnter={() => {
+                    if (click !== index) {
+                      setClick(index);
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    if (click !== index) {
+                      setClick(null);
+                    }
+                  }}
                 >
                   <div
-                    className={`${
-                      click === index
-                        ? "underline border-b border-red-700 px-1 py-1"
-                        : ""
+                    className={`transition-opacity duration-400 ease-in-out ${
+                      click === index ? "opacity-100" : "opacity-75"
                     }`}
                   >
                     {ele.icon}
                   </div>
-                  <h2 className="text-[30px] font-semibold">{ele.name}</h2>
+                  <h2
+                    className={`text-[22px] font-semibold transition-opacity duration-400 ease-in-out ${
+                      click === index ? "opacity-100" : "opacity-75"
+                    }`}
+                  >
+                    {ele.name}
+                  </h2>
                 </div>
               ))}
             </div>

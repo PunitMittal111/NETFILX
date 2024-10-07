@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import { MdOutlineEdit } from "react-icons/md";
 import EditProfileModal from "./EditProfileModal";
+import { motion, AnimatePresence } from "framer-motion"; // Import framer-motion
 
-const ProfileModal = ({ onClose }) => {
+const ProfileModal = ({ onClose, isOpen, setIsOpen }) => {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [profileImageUrl, setProfileImageUrl] = useState(
     "https://t4.ftcdn.net/jpg/03/91/55/85/360_F_391558541_Yqt3ZBJz6NxMrcgQbHC7Xb8lDkUkSF3r.jpg"
   );
+  const modalRef = useRef();
 
   const openEditModal = () => {
     setIsEditOpen(true);
@@ -22,25 +24,50 @@ const ProfileModal = ({ onClose }) => {
     closeEditModal();
   };
 
+  const handleClickOutside = (event) => {
+    if (
+      modalRef.current &&
+      !modalRef.current.contains(event.target) &&
+      !isEditOpen
+    ) {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen && !isEditOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, isEditOpen]);
+
   return (
     <>
-      {isEditOpen ? (
-        <EditProfileModal
-          isOpen={isEditOpen}
-          setIsOpen={setIsEditOpen}
-          onClose={closeEditModal}
-          profileImageUrl={profileImageUrl}
-          updateProfileImage={updateProfileImage}
-        />
-      ) : (
-        <>
-          <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-            <div className="absolute inset-0 bg-gray-900/10 backdrop-blur-[1.5px]"></div>
-          </div>
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div
+              className="fixed inset-0 z-50 bg-gray-900/20 backdrop-blur-[2px]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            />
 
-          <div className="fixed inset-0 flex items-center justify-center z-50 pl-[20%]">
-            <div className=" bg-black border border-gray-200 rounded-lg shadow-lg py-5 px-7 w-80">
-              <div>
+            <motion.div
+              className="fixed inset-0 flex items-center justify-center z-50"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div
+                ref={modalRef}
+                className="bg-[#0A0A0A] border border-gray-200 rounded-lg shadow-lg py-5 px-7 w-80"
+              >
                 <div className="flex items-center justify-between mb-6">
                   <div className="relative">
                     <img
@@ -55,24 +82,32 @@ const ProfileModal = ({ onClose }) => {
                       <MdOutlineEdit className="text-white" size={14} />
                     </button>
                   </div>
-
                   <button
                     onClick={onClose}
-                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                    className="text-gray-400 pb-[30%] hover:text-white transition-colors duration-200"
                   >
                     <FaTimes />
                   </button>
                 </div>
+                <div className="ml-4">
+                  <h2 className="text-base font-semibold">Name*</h2>
+                  <p className="text-gray-600 text-sm">Email</p>
+                </div>
               </div>
+            </motion.div>
 
-              <div className="ml-4">
-                <h2 className="text-base font-semibold">Punit Mittal</h2>
-                <p className="text-gray-600 text-sm">punitnetflix@gmail.com</p>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
+            {isEditOpen && (
+              <EditProfileModal
+                isOpen={isEditOpen}
+                setIsOpen={setIsEditOpen}
+                onClose={closeEditModal}
+                profileImageUrl={profileImageUrl}
+                updateProfileImage={updateProfileImage}
+              />
+            )}
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };
