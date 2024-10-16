@@ -2,9 +2,16 @@ import React, { useState, useRef, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import { MdOutlineEdit } from "react-icons/md";
 import EditProfileModal from "./EditProfileModal";
-import { motion, AnimatePresence } from "framer-motion"; // Import framer-motion
+import { motion, AnimatePresence } from "framer-motion";
 
-const ProfileModal = ({ onClose, isOpen, setIsOpen }) => {
+const formFields = [
+  { label: "Name", type: "text", placeholder: "Enter your name" },
+  { label: "Email", type: "email", placeholder: "Enter your email" },
+  { label: "Phone", type: "tel", placeholder: "Enter your phone number" },
+  { label: "Card", type: "text", placeholder: "Enter your card number" },
+];
+
+const ProfileModal = ({ onClose, isOpen, setIsOpen, email, setEmail }) => {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [profileImageUrl, setProfileImageUrl] = useState(
     "https://t4.ftcdn.net/jpg/03/91/55/85/360_F_391558541_Yqt3ZBJz6NxMrcgQbHC7Xb8lDkUkSF3r.jpg"
@@ -45,6 +52,10 @@ const ProfileModal = ({ onClose, isOpen, setIsOpen }) => {
     };
   }, [isOpen, isEditOpen]);
 
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
   return (
     <>
       <AnimatePresence>
@@ -66,7 +77,7 @@ const ProfileModal = ({ onClose, isOpen, setIsOpen }) => {
             >
               <div
                 ref={modalRef}
-                className="bg-[#0A0A0A] border border-gray-200 rounded-lg shadow-lg py-5 px-7 w-80"
+                className="bg-[#0A0A0A] border border-gray-200 rounded-lg shadow-lg py-5 px-7 w-max"
               >
                 <div className="flex items-center justify-between mb-6">
                   <div className="relative">
@@ -82,6 +93,7 @@ const ProfileModal = ({ onClose, isOpen, setIsOpen }) => {
                       <MdOutlineEdit className="text-white" size={14} />
                     </button>
                   </div>
+
                   <button
                     onClick={onClose}
                     className="text-gray-400 pb-[30%] hover:text-white transition-colors duration-200"
@@ -89,9 +101,42 @@ const ProfileModal = ({ onClose, isOpen, setIsOpen }) => {
                     <FaTimes />
                   </button>
                 </div>
-                <div className="ml-4">
-                  <h2 className="text-base font-semibold">Name*</h2>
-                  <p className="text-gray-600 text-sm">Email</p>
+
+                <div className="flex flex-col ml-4 space-y-6">
+                  {formFields.map(({ label, type, placeholder }, index) => (
+                    <div key={index} className="flex items-center space-x-4">
+                      {/* <h2 className="w-1/4 text-lg font-bold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+                        <span className="font-serif">{label}</span>
+                        <span className="text-red-500 font-medium"> *</span>:
+                      </h2> */}
+                      <h2 className="w-1/4 text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-pink-500 to-red-500">
+                        <span className="font-serif">{label}</span>
+                        <span className="text-red-500">*</span>:
+                      </h2>
+                      <input
+                        type={type}
+                        placeholder={placeholder}
+                        value={label === "Email" ? email : ""}
+                        onChange={label === "Email" ? handleEmailChange : null}
+                        className="flex-1 px-10 py-2 rounded-3xl text-gray-700 bg-gray-200 focus:bg-white border border-gray-300 focus:border-blue-500 outline-none transition duration-200 shadow-sm"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-4 flex justify-end gap-3">
+                  <button
+                    // onClick={handleSave}
+                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+                  >
+                    Save Changes
+                  </button>
+                  <button
+                    // onClick={onClose}
+                    className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
+                  >
+                    Cancel
+                  </button>
                 </div>
               </div>
             </motion.div>

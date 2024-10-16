@@ -22,6 +22,7 @@ const SideBar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [email, setEmail] = useState("PunitMittal@gmail.com");
 
   const notificationModalRef = useRef(null);
   const notificationIconRef = useRef(null);
@@ -111,7 +112,7 @@ const SideBar = () => {
               className="cursor-pointer text-[20px] font-semibold"
               onClick={toggleProfileModal}
             >
-              Profile
+              {email}
             </h1>
             {isProfileModalOpen && (
               <div>
@@ -119,6 +120,8 @@ const SideBar = () => {
                   onClose={toggleProfileModal}
                   isOpen={isProfileModalOpen}
                   setIsOpen={setIsProfileModalOpen}
+                  email={email}
+                  setEmail={setEmail}
                 />
               </div>
             )}
