@@ -76,11 +76,17 @@ const SideBar = () => {
 
   return (
     <div
-      className={`h-[100vh] ${
+      className={`relative top-0 left-0 h-[100vh] ${
         isSidebarOpen ? "w-[21%]" : "w-[4%]"
       } bg-[#0A0A0A] text-white border-r border-r-gray-500 transition-all duration-300 overflow-hidden`}
     >
       <div className="flex justify-between items-center w-[90%] ml-3 py-3">
+        {/* <div
+      className={`h-[100vh] ${
+        isSidebarOpen ? "w-[21%]" : "w-[4%]"
+      } bg-[#0A0A0A] text-white border-r border-r-gray-500 transition-all duration-300 overflow-hidden`}
+    >
+      <div className="flex justify-between items-center w-[90%] ml-3 py-3"> */}
         <FaListUl
           className="cursor-pointer"
           size={32}
