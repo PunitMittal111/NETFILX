@@ -76,7 +76,7 @@ const SideBar = () => {
 
   return (
     <div
-      className={`relative top-0 left-0 h-[100vh] ${
+      className={` h-[100vh] ${
         isSidebarOpen ? "w-[21%]" : "w-[4%]"
       } bg-[#0A0A0A] text-white border-r border-r-gray-500 transition-all duration-300 overflow-hidden`}
     >
