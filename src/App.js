@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import React ,{useEffect, useState} from "react";
+import { Route, Routes, useNavigate ,useSearchParams } from "react-router-dom";
 import SideBar from "./Components/SideBar/SideBar";
 import Home from "./Pages/Home/Home.jsx";
 import NewPopular from "./Pages/New&Popular/NewPopular.jsx";
@@ -13,9 +13,35 @@ import Search from "./Pages/Search/Search.jsx";
 import CategoryResults from "./Pages/Categories/CategoryResult.jsx";
 import ProtectedRoute from "./Components/Common/ProtectedRoute.jsx";
 import UnauthorizedModal from "./Components/Common/UnauthorizedModal.jsx";
+import { fetchUserById } from "./redux/profileSlice/profileSlice.js";
+import { useDispatch, useSelector } from "react-redux";
+import Cookies from "js-cookie";
 
 function App() {
-  const Navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const userId = searchParams.get("userId") || Cookies.get("userId") ;
+  const token = searchParams.get("token") || Cookies.get("token");
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  // console.log(userId ,token )
+  Cookies.set("userId", userId)
+  Cookies.set("token", token)
+
+  
+  // const { profileData } = useSelector((state) => state.profile);
+  // console.log(profileData)
+
+
+
+  useEffect(() => {
+    if (userId && token) {
+      localStorage.setItem("token", token);
+      dispatch(fetchUserById({userId,token}));
+    }
+  }, [userId, token, dispatch]);
+
   return (
     <div className="flex justify-center items-center">
       <SideBar />
@@ -47,15 +73,15 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/tvShows" element={<TvShows />} />
+          <Route path="/tvShows" element={<ProtectedRoute><TvShows /></ProtectedRoute>} />
           <Route
-            path="/TvShowsDetails/:id"
-            element={
-              <ProtectedRoute>
-                <TvShowsDetails />
-              </ProtectedRoute>
-            }
-          />
+  path="/tvShowsDetails"
+  element={
+    <ProtectedRoute>
+      <TvShowsDetails />
+    </ProtectedRoute>
+  }
+/>
           <Route
             path="/tvshows/:id"
             element={
@@ -112,8 +138,8 @@ function App() {
               </ProtectedRoute>
             }
           />
-
-          <Route path="/" element={<Navigate to="/" />} />
+  
+    
         </Routes>
       </div>
     </div>

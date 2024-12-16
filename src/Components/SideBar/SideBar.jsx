@@ -6,6 +6,8 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import NotificationModal from "./NotificationModal";
 import ProfileModal from "./ProfileModal";
+import { useSelector } from "react-redux";
+
 
 const sideBarLinks = [
   { name: "Search", icon: <FaSearch size={22} />, route: "/search" },
@@ -19,10 +21,20 @@ const sideBarLinks = [
 
 const SideBar = () => {
   const [click, setClick] = useState(null);
+  const { profileData } = useSelector((state) => state.profile);
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isNotificationModalOpen, setIsNotificationModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
-  const [email, setEmail] = useState("PunitMittal@gmail.com");
+  // const [email, setEmail] = useState(profileData.email);
+  const [email, setEmail] = useState(profileData?.email || '');
+
+  // const [email, setEmail] = useState("PunitMittal@gmail.com");
+  useEffect(() => {
+    if (profileData && profileData.email) {
+        setEmail(profileData.email);
+    }
+}, [profileData]);
 
   const notificationModalRef = useRef(null);
   const notificationIconRef = useRef(null);
@@ -81,12 +93,6 @@ const SideBar = () => {
       } bg-[#0A0A0A] text-white border-r border-r-gray-500 transition-all duration-300 overflow-hidden`}
     >
       <div className="flex justify-between items-center w-[90%] ml-3 py-3">
-        {/* <div
-      className={`h-[100vh] ${
-        isSidebarOpen ? "w-[21%]" : "w-[4%]"
-      } bg-[#0A0A0A] text-white border-r border-r-gray-500 transition-all duration-300 overflow-hidden`}
-    >
-      <div className="flex justify-between items-center w-[90%] ml-3 py-3"> */}
         <FaListUl
           className="cursor-pointer"
           size={32}
@@ -108,17 +114,17 @@ const SideBar = () => {
       {isSidebarOpen && (
         <>
           <div className="flex gap-2 mt-2 w-[90%] ml-3 cursor-pointer">
-            <img
+            {/* <img
               src="https://t4.ftcdn.net/jpg/03/91/55/85/360_F_391558541_Yqt3ZBJz6NxMrcgQbHC7Xb8lDkUkSF3r.jpg"
               alt="Profile"
               className="h-7 w-7 rounded-3xl"
               onClick={toggleProfileModal}
-            />
+            /> */}
             <h1
               className="cursor-pointer text-[20px] font-semibold"
               onClick={toggleProfileModal}
             >
-              {email}
+              Email : {email}
             </h1>
             {isProfileModalOpen && (
               <div>

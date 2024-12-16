@@ -23,14 +23,14 @@ const NewPopular = () => {
 
       <div className="text-center text-white">
         <div className="grid grid-cols-4 gap-6 p-10">
-          {sortedData.map((item) => (
+          {sortedData.map((item, index) => (
             <Link
               to={
                 item.type === "movie"
                   ? `/movies/${item.id}`
                   : `/tvshows/${item.id}`
               }
-              key={item.id}
+              key={index} 
               className="grid items-center justify-center py-2 cursor-pointer"
             >
               <img

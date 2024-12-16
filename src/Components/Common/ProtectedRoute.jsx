@@ -1,11 +1,12 @@
-import Cookies from "js-cookie";
 import { Navigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const ProtectedRoute = ({ children }) => {
-  const accessToken = Cookies.get("Token");
-  const userId = Cookies.get("UserId");
-
-  if (!accessToken || !userId) {
+  const token = Cookies.get("token");
+  const userId = Cookies.get("userId");
+// console.log(token)
+// console.log(userId)
+  if (!token || !userId) {
     return <Navigate to="/unauthorized" />;
   }
 
