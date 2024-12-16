@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { data } from "./moviesData";
 import "../../Components/Common/Image2.css";
 import StarRating from "../../Components/Common/StarRating";
-import CustomVideoPlayer from "../../Components/Common/Videoplayer";
+// import CustomVideoPlayer from "../../Components/Common/Videoplayer";
 import { FaHeart } from "react-icons/fa";
 
 const MoviesDetails = () => {
@@ -89,7 +89,7 @@ const MoviesDetails = () => {
         </p>
         <div className="mt-4">
           <h2 className="text-2xl font-semibold pb-3">Watch the Movie</h2>
-          <CustomVideoPlayer />
+          {/* <CustomVideoPlayer /> */}
         </div>
       </div>
     </div>

@@ -20,10 +20,10 @@ const Categories = () => {
       </div>
 
       <div className="grid grid-cols-4 gap-6 p-10 text-white text-center">
-        {data.map((item) => (
+        {data.map((item, index) => (
           <div
             className="grid items-center justify-center py-2 cursor-pointer"
-            key={item.id}
+            key={index}
             onClick={() => handleCategoryClick(item.type)}
           >
             <img

@@ -6,9 +6,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const formFields = [
   { label: "Name", type: "text", placeholder: "Enter your name" },
-  { label: "Email", type: "email", placeholder: "Enter your email" },
   { label: "Phone", type: "tel", placeholder: "Enter your phone number" },
-  { label: "Card", type: "text", placeholder: "Enter your card number" },
+  { label: "Email", type: "email", placeholder: "Enter your email" },
+  { label: "Password", type: "text", placeholder: "Enter your password" },
 ];
 
 const ProfileModal = ({ onClose, isOpen, setIsOpen, email, setEmail }) => {
@@ -16,7 +16,7 @@ const ProfileModal = ({ onClose, isOpen, setIsOpen, email, setEmail }) => {
   const [profileImageUrl, setProfileImageUrl] = useState(
     "https://t4.ftcdn.net/jpg/03/91/55/85/360_F_391558541_Yqt3ZBJz6NxMrcgQbHC7Xb8lDkUkSF3r.jpg"
   );
-  const modalRef = useRef();
+  const modalRef = useRef();  
 
   const openEditModal = () => {
     setIsEditOpen(true);
